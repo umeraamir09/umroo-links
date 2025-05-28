@@ -9,6 +9,9 @@ import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
 import { LinkIcons } from '@/components/LinkIcons';
+import { metadata } from '../layout';
+
+metadata.title = "Songs Playlist"
 
 const PROFILE_QUERY = `*[_type == "profile" && slug.current == 'umroo'][0]`;
 const BUTTONS_QUERY = `*[_type== "buttons" && order >= 9] | order(order asc)`
