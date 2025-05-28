@@ -7,7 +7,6 @@ interface ShareButtonsProps {
 }
 
 export const ShareButtons: React.FC<ShareButtonsProps> = ({ url, title = "Check this out!" }) => {
-  const encodedUrl = encodeURIComponent(url)
   const encodedText = encodeURIComponent(`${title} ${url}`)
 
   const handleShare = (platform: 'whatsapp' | 'discord' | 'instagram') => {

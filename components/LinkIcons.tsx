@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaInstagram, FaSpotify } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
 import { FaThreads } from 'react-icons/fa6';
 import { SlSocialSpotify } from "react-icons/sl";
 import { TriggeTooltip } from './TriggerTooltip';

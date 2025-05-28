@@ -1,6 +1,18 @@
 // app/api/track-info/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 
+interface PlatformDetails {
+  url?: string;
+  [key: string]: any;
+}
+
+interface Artist {
+  name: string;
+  [key: string]: any;
+}
+
+
+
 // Spotify credentials from environment
 const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID!
 const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET!
@@ -35,9 +47,9 @@ async function getSongLinksFromSonglink(trackId: string): Promise<Record<string,
   if (data.linksByPlatform) {
     for (const [platform, details] of Object.entries(data.linksByPlatform)) {
       // only extract url if present
-      if (typeof details === 'object' && details && 'url' in details) {
-        links[platform] = (details as any).url
-      }
+    if (typeof details === 'object' && details && 'url' in details) {
+      links[platform] = (details as PlatformDetails).url!;
+    }
     }
   }
 
@@ -68,7 +80,7 @@ export async function GET(req: NextRequest) {
     const track = await spotifyRes.json()
 
     const name: string = track.name
-    const artist: string = track.artists.map((a: any) => a.name).join(', ')
+    const artist: string = track.artists.map((a: Artist) => a.name).join(', ')
     const cover: string = track.album.images[0]?.url
     const duration: number = track.duration_ms
     const spotifyEmbed = `https://open.spotify.com/embed/track/${trackId}`

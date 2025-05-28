@@ -3,12 +3,11 @@ import { LinkButton } from '@/components/LinkButton';
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { Button } from '@/components/ui/button';
-import { FaArrowLeft, FaRegBell } from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
 import { IoEllipsisHorizontal } from 'react-icons/io5';
 import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
-import { LinkIcons } from '@/components/LinkIcons';
 import { metadata } from '../layout';
 
 metadata.title = "Songs Playlist"
@@ -43,7 +42,7 @@ export default async function Home() {
               title={'Share My Links'}
               description={<>
                 <div className='bg-[#f2c679] p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
-                  <img src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
+                  <Image src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
                   <h1 className='text-3xl font-LinkSansBlack text-black mt-3'>{profile.fullname}</h1>
                   <div className='flex justify-center'> 
                     <h1 className='flex items-center font-LinkSansMedium text-lg'><MdOutlineInsertLink className='text-bold text-3xl mr-1' />umroo.art/links</h1>

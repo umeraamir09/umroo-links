@@ -2,26 +2,13 @@
 import { ShareLinkPopup } from "./ShareLinkPopup";
 import { useEffect, useState } from 'react'
 import { Button } from "./ui/button";
-import { CopyLinkButton } from "./copyLinkButton";
-import { MdAccessTime, MdAlternateEmail } from "react-icons/md";
-import { FaLink, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { MdAlternateEmail } from "react-icons/md";
+import { FaLink, FaMapMarkerAlt } from "react-icons/fa";
 import { ListenOnButtons } from "./ListenOnButtons";
 import { TriggerDialog } from "./TriggerDialog";
 import { TriggerDrawer } from "./TriggerDrawer";
 import { IoLogoDiscord } from "react-icons/io5";
 import {useMediaQuery} from "../lib/useMediaQuery"
-
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Skeleton } from "./ui/skeleton";
 import { FaDiscord } from "react-icons/fa6";
 
 
@@ -65,10 +52,7 @@ export const LinkButton = ({
   type,
   imageLink,
   contactEmail,
-  contactName,
-  contactNumber,
   trackId,
-  commnityTitle,
   description
 }: Props) => {
 
