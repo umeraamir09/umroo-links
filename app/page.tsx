@@ -38,7 +38,7 @@ export default async function Home() {
               title={'Share My Links'}
               description={<>
                 <div className='bg-[#f2c679] p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
-                  <Image src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
+                  <img src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
                   <h1 className='text-3xl font-LinkSansBlack text-black mt-3'>Newsletter</h1>
                   <div className='flex justify-center'> 
                     <h1 className='flex items-center font-LinkSansMedium text-lg'>Coming Soon</h1>

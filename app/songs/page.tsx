@@ -56,8 +56,8 @@ export default async function Home() {
           </div>
           {/* Profile Image */}
           <div className="flex justify-center mb-4">
-            <Image src={profile.profilepicurl || 'https://pbs.twimg.com/profile_banners/1850808694365122560/1748177961/1500x500'} width={100} height={100} alt='image' className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-sm text-white">
-            </Image>
+            <img src={profile.profilepicurl || 'https://pbs.twimg.com/profile_banners/1850808694365122560/1748177961/1500x500'} width={100} height={100} alt='image' className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-sm text-white">
+            </img>
           </div>
 
           {/* Username */}
