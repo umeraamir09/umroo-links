@@ -18,6 +18,13 @@ export const buttonType = defineType({
                                 .slice(0, 200)
         }
         }),
+                defineField({
+    title: 'Should it not be visible on the main page?',
+    name: 'visiblity',
+    type: 'boolean',
+    hidden: false
+    }),
+
         defineField({
     title: 'Label',
     name: 'label',

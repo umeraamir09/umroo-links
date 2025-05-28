@@ -10,7 +10,7 @@ export const LinkIcons = () => {
     <div className='flex justify-center items-center'>
     <div className='flex space-x-3 mb-4'>
         <TriggeTooltip
-        trigger={<a href='https://umroo.art/'><SlSocialSpotify className='text-[2.5rem]' /></a>}
+        trigger={<a href='/songs'><SlSocialSpotify className='text-[2.5rem]' /></a>}
         content={'More of my favourite songs'}
 
         />

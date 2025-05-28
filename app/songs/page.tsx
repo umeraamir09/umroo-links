@@ -3,7 +3,7 @@ import { LinkButton } from '@/components/LinkButton';
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { Button } from '@/components/ui/button';
-import { FaRegBell } from 'react-icons/fa';
+import { FaArrowLeft, FaRegBell } from 'react-icons/fa';
 import { IoEllipsisHorizontal } from 'react-icons/io5';
 import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
@@ -11,7 +11,7 @@ import { MdOutlineInsertLink } from 'react-icons/md';
 import { LinkIcons } from '@/components/LinkIcons';
 
 const PROFILE_QUERY = `*[_type == "profile" && slug.current == 'umroo'][0]`;
-const BUTTONS_QUERY = `*[_type== "buttons" && order < 9] | order(order asc)`
+const BUTTONS_QUERY = `*[_type== "buttons" && order >= 9] | order(order asc)`
 const options = { next: { revalidate: 30 } };
  
 export default async function Home() {
@@ -33,20 +33,8 @@ export default async function Home() {
         {/* Main Content Box */}
         <div className="w-full max-w-xl rounded-2xl text-white">
           <div className='flex justify-between'>
-            <TriggerDialog
-              trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><FaRegBell /></Button>}
-              title={'Share My Links'}
-              description={<>
-                <div className='bg-[#f2c679] p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
-                  <img src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
-                  <h1 className='text-3xl font-LinkSansBlack text-black mt-3'>Newsletter</h1>
-                  <div className='flex justify-center'> 
-                    <h1 className='flex items-center font-LinkSansMedium text-lg'>Coming Soon</h1>
-                  </div>
-                </div>
-              </>}
+            <a href={process.env.BASE_URL}><Button className='w-10 h-10 rounded-full bg-black/40'><FaArrowLeft /></Button></a>
             
-            />
             <TriggerDialog
               trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><IoEllipsisHorizontal /></Button>}
               title={'Share My Links'}
@@ -71,14 +59,13 @@ export default async function Home() {
           </div>
 
           {/* Username */}
-          <h1 className="text-center text-xl font-bold mb-1">{profile.fullname}</h1>
+          <h1 className="text-center text-xl font-bold mb-1">{"Playlist"}</h1>
 
           {/* Bio */}
           <p className="text-center text-sm text-white/70 mb-4">
-            ✨ Wsup? Im Umroo! These are all my social links. I would appreciate you checking them out :) ✨
+            🎸 These are all of my favourite songs enjoy :) 🎵
           </p>
           
-          <LinkIcons />
 
 
           {/* Links */}

@@ -26,7 +26,7 @@ export const TriggerDrawer = ({trigger, title, description, children}: TriggerDr
   <DrawerContent>
     <DrawerHeader>
      <div className="text-center space-y-3">
-        <DrawerTitle>{title}</DrawerTitle>
+        <DrawerTitle className="font-LinkSansBold">{title}</DrawerTitle>
       </div>
       <div>
         {description}
