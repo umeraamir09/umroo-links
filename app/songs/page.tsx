@@ -9,7 +9,6 @@ import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
 import { metadata } from '../layout';
-import { SongBulkAdd } from '@/components/SongBulkAdd';
 
 metadata.title = "Umroo's Songs Playlist"
 
@@ -57,7 +56,7 @@ export default async function Home() {
           </div>
           {/* Profile Image */}
           <div className="flex justify-center mb-4">
-            <img
+            <Image
               src={profile.profilepicurl || 'https://pbs.twimg.com/profile_banners/1850808694365122560/1748177961/1500x500'}
               width={100}
               height={100}

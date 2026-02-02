@@ -3,12 +3,12 @@ import { NextRequest, NextResponse } from 'next/server'
 
 interface PlatformDetails {
   url?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface Artist {
   name: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 

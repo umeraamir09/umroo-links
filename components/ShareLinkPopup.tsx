@@ -79,6 +79,7 @@ export const ShareLinkPopup = ({
               <a href={href} target="_blank" rel="noopener noreferrer">
                 <div className="py-5 px-10 sm:py-10 sm:px-20 rounded-xl border-gray-300 border-2 bg-gray-200">
                   <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={musicInfo?.cover}
                       alt={musicInfo?.name ?? label}

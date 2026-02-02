@@ -65,7 +65,7 @@ export default async function Home() {
 
           {/* Bio */}
           <p className="text-center text-sm text-white/70 mb-4 text-pretty">
-            Hi, I'm {profile.fullname}! Welcome to my link page. Explore and connect with me through the links below.
+            Hi, I&apos;m {profile.fullname}! Welcome to my link page. Explore and connect with me through the links below.
           </p>
           
           <LinkIcons />

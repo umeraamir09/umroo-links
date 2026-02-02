@@ -46,8 +46,8 @@ export function NewsletterPopup({
 
       setSuccess(true)
       setEmail('')
-    } catch (err: any) {
-      setError(err?.message || 'Something went wrong')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
     } finally {
       setLoading(false)
     }
@@ -66,7 +66,7 @@ export function NewsletterPopup({
       )}
       <h1 className="text-3xl font-LinkSansBlack text-black mt-3">{title}</h1>
       <p className="text-sm text-gray-600 mt-1">
-        Subscribe to my newsletter 'Terminal Adventures' for guides on linux, programming, and tech tips.
+        Subscribe to my newsletter &apos;Terminal Adventures&apos; for guides on linux, programming, and tech tips.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">

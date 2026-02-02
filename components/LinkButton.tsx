@@ -89,6 +89,7 @@ const MusicTrigger = forwardRef<
     <div ref={ref} {...props} className={`relative w-full ${props.className ?? ''}`}>
       <div className="base-link-btn pl-16">
         {cover && (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={cover}
             width={45}
@@ -145,6 +146,7 @@ const DiscordTrigger = forwardRef<
         <span className="z-10 pointer-events-auto text-center absolute top-6">{label}</span>
         <FaDiscord size={25} className="absolute top-5 left-5" />
         {imageLink && (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             className="h-48 rounded-xl"
             src={imageLink}
@@ -168,6 +170,7 @@ const DiscordContent = ({ href, imageLink, description }: { href: string; imageL
   <div className="relative rounded-xl overflow-hidden text-center font-sans w-full max-w-md mx-auto">
     <div className="relative aspect-square w-full">
       {imageLink ? (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={imageLink}
           alt="server icon"
@@ -214,6 +217,7 @@ const GameTrigger = React.forwardRef<
             className="w-10 h-10 rounded-lg bg-gray-200 overflow-hidden border border-black/10"
           >
             {game.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={game.image}
                 alt={game.name}
@@ -241,6 +245,7 @@ const GameContent = ({ games }: { games: GameInfo[] }) => (
       <div key={game.id} className="rounded-xl border border-gray-200 bg-white p-3 text-center">
         <div className="w-full aspect-square rounded-lg overflow-hidden bg-gray-100">
           {game.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={game.image}
               alt={game.name}
@@ -307,8 +312,8 @@ export const LinkButton = ({
         if (!res.ok) throw new Error(data.error || 'Failed to fetch track info')
 
         setTrackInfo(data)
-      } catch (err: any) {
-        if (err?.name !== 'AbortError') {
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name !== 'AbortError') {
           setError(err.message)
         }
       } finally {
@@ -345,8 +350,8 @@ export const LinkButton = ({
         if (!res.ok) throw new Error(data.error || 'Failed to fetch games')
 
         setGames(data.games || [])
-      } catch (err: any) {
-        if (err?.name !== 'AbortError') {
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name !== 'AbortError') {
           setGamesError(err.message)
         }
       } finally {
