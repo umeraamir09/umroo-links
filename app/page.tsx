@@ -3,13 +3,12 @@ import { LinkButton } from '@/components/LinkButton';
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { Button } from '@/components/ui/button';
-import { FaRegBell } from 'react-icons/fa';
 import { IoEllipsisHorizontal } from 'react-icons/io5';
 import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
 import { LinkIcons } from '@/components/LinkIcons';
-import { NewsletterPopup } from '@/components/NewsletterPopup';
+import { NewsletterDialog } from '@/components/NewsletterDialog';
 
 const PROFILE_QUERY = `*[_type == "profile" && slug.current == 'umroo'][0]`;
 const BUTTONS_QUERY = `*[_type== "buttons" && order < 9] | order(order asc)`
@@ -34,17 +33,7 @@ export default async function Home() {
         {/* Main Content Box */}
         <div className="w-full max-w-xl rounded-2xl text-white">
           <div className='flex justify-between'>
-            <TriggerDialog
-              trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><FaRegBell /></Button>}
-              title={'Newsletter'}
-              description={
-                <NewsletterPopup
-                  profilePicUrl={profile.profilepicurl}
-                  blogUrl="https://blog.umroo.dev"
-                />
-              }
-            
-            />
+            <NewsletterDialog profilePicUrl={profile.profilepicurl} blogUrl="https://blog.umroo.dev" />
             <TriggerDialog
               trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><IoEllipsisHorizontal /></Button>}
               title={'Share My Links'}

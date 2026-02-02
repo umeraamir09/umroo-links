@@ -12,13 +12,15 @@ interface TriggerDialogProps {
   title: string
   description?: React.ReactNode
   children?: React.ReactNode
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
 }
 
-export const TriggerDialog = ({ trigger, title, description, children }: TriggerDialogProps) => {
+export const TriggerDialog = ({ trigger, title, description, children, open, onOpenChange }: TriggerDialogProps) => {
   const isTextDescription = typeof description === 'string' || typeof description === 'number'
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         {trigger}
       </DialogTrigger>
