@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Umroo's Links",
-  description: "All of Umer's faourite links with a personal touch :)",
+  description: "All of my social links in one place!",
 };
 
 export default function RootLayout({

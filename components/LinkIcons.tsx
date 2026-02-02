@@ -16,7 +16,7 @@ export const LinkIcons = () => {
         />
          <TriggeTooltip
         trigger={<a href='https://instagram.com/umrooishe'><FaInstagram className='text-[2.5rem]' /></a>}
-        content={'Second instagram account for my close friends'}
+        content={'Personal Instagram Account'}
 
         />
          <TriggeTooltip

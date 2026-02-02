@@ -15,6 +15,8 @@ interface TriggerDialogProps {
 }
 
 export const TriggerDialog = ({ trigger, title, description, children }: TriggerDialogProps) => {
+  const isTextDescription = typeof description === 'string' || typeof description === 'number'
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -27,9 +29,13 @@ export const TriggerDialog = ({ trigger, title, description, children }: Trigger
           <DialogTitle className="font-LinkSansBold">{title}</DialogTitle>
         </div>
         {description && (
-          <DialogDescription>
-            {description}
-          </DialogDescription>
+          isTextDescription ? (
+            <DialogDescription>
+              {description}
+            </DialogDescription>
+          ) : (
+            <div className="text-sm text-muted-foreground">{description}</div>
+          )
         )}
         {children}
         </DialogHeader>

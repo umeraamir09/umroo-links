@@ -9,8 +9,9 @@ import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
 import { metadata } from '../layout';
+import { SongBulkAdd } from '@/components/SongBulkAdd';
 
-metadata.title = "Songs Playlist"
+metadata.title = "Umroo's Songs Playlist"
 
 const PROFILE_QUERY = `*[_type == "profile" && slug.current == 'umroo'][0]`;
 const BUTTONS_QUERY = `*[_type== "buttons" && order >= 9] | order(order asc)`
@@ -26,7 +27,7 @@ export default async function Home() {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            `url('https://i.ibb.co/393VCq02/Untitled-1.png')`,
+            `url('bg.jpg')`,
         }}
       />
 
@@ -41,14 +42,14 @@ export default async function Home() {
               trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><IoEllipsisHorizontal /></Button>}
               title={'Share My Links'}
               description={<>
-                <div className='bg-[#f2c679] p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
-                  <Image src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
+                <div className=' p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
+                  <Image src={profile.profilepicurl} width={100} height={100} alt="" className='w-[100px] mx-auto rounded-full' />
                   <h1 className='text-3xl font-LinkSansBlack text-black mt-3'>{profile.fullname}</h1>
                   <div className='flex justify-center'> 
-                    <h1 className='flex items-center font-LinkSansMedium text-lg'><MdOutlineInsertLink className='text-bold text-3xl mr-1' />umroo.art/links</h1>
+                    <h1 className='flex items-center font-LinkSansMedium text-lg'><MdOutlineInsertLink className='text-bold text-3xl mr-1' />links.umroo.dev/playlist</h1>
                   </div>
                 </div>
-                <CopyLinkButton link={process.env.BASE_URL!} tag='Link' />
+                <CopyLinkButton link={process.env.BASE_URL! + '/playlist'} tag='Link' />
               </>}
             
             />
@@ -56,8 +57,15 @@ export default async function Home() {
           </div>
           {/* Profile Image */}
           <div className="flex justify-center mb-4">
-            <img src={profile.profilepicurl || 'https://pbs.twimg.com/profile_banners/1850808694365122560/1748177961/1500x500'} width={100} height={100} alt='image' className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-sm text-white">
-            </img>
+            <img
+              src={profile.profilepicurl || 'https://pbs.twimg.com/profile_banners/1850808694365122560/1748177961/1500x500'}
+              width={100}
+              height={100}
+              alt='image'
+              className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-sm text-white"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           {/* Username */}
@@ -65,8 +73,10 @@ export default async function Home() {
 
           {/* Bio */}
           <p className="text-center text-sm text-white/70 mb-4">
-            🎸 These are all of my favourite songs enjoy :) 🎵
+            🎸 These are some of my favourite songs enjoy :) 🎵
           </p>
+
+          {/* <SongBulkAdd /> */}
           
 
 

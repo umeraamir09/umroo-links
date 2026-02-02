@@ -81,6 +81,14 @@ export const buttonType = defineType({
     validation: Rule => Rule.max(22).warning(`The type shouldn't be more than 22 characters.`)
     }),
         defineField({
+    title: 'Game IDs (RAWG)',
+    name: 'gameIds',
+    type: 'array',
+    description: 'Add exactly 3 RAWG game IDs or slugs (used for Game showcase type).',
+    of: [{type: 'string'}],
+    validation: Rule => Rule.min(3).max(3).warning('Add exactly 3 games.')
+    }),
+        defineField({
     title: 'Community Title',
     name: 'communityTitle',
     type: 'string',

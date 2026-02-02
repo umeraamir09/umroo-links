@@ -9,6 +9,7 @@ import { TriggerDialog } from '@/components/TriggerDialog';
 import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
 import { LinkIcons } from '@/components/LinkIcons';
+import { NewsletterPopup } from '@/components/NewsletterPopup';
 
 const PROFILE_QUERY = `*[_type == "profile" && slug.current == 'umroo'][0]`;
 const BUTTONS_QUERY = `*[_type== "buttons" && order < 9] | order(order asc)`
@@ -24,7 +25,7 @@ export default async function Home() {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            `url('https://i.ibb.co/393VCq02/Untitled-1.png')`,
+            `url('bg.jpg')`,
         }}
       />
 
@@ -35,27 +36,24 @@ export default async function Home() {
           <div className='flex justify-between'>
             <TriggerDialog
               trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><FaRegBell /></Button>}
-              title={'Share My Links'}
-              description={<>
-                <div className='bg-[#f2c679] p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
-                  <img src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
-                  <h1 className='text-3xl font-LinkSansBlack text-black mt-3'>Newsletter</h1>
-                  <div className='flex justify-center'> 
-                    <h1 className='flex items-center font-LinkSansMedium text-lg'>Coming Soon</h1>
-                  </div>
-                </div>
-              </>}
+              title={'Newsletter'}
+              description={
+                <NewsletterPopup
+                  profilePicUrl={profile.profilepicurl}
+                  blogUrl="https://blog.umroo.dev"
+                />
+              }
             
             />
             <TriggerDialog
               trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><IoEllipsisHorizontal /></Button>}
               title={'Share My Links'}
               description={<>
-                <div className='bg-[#f2c679] p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
-                  <Image src={profile.profilepicurl} alt="" className='w-[100px] mx-auto rounded-full' />
+                <div className='p-5 rounded-2xl text-black text-center w-[80%] mx-auto my-2'>
+                  <Image src={profile.profilepicurl} width={100} height={100} alt="" className='w-[100px] mx-auto rounded-full' />
                   <h1 className='text-3xl font-LinkSansBlack text-black mt-3'>{profile.fullname}</h1>
                   <div className='flex justify-center'> 
-                    <h1 className='flex items-center font-LinkSansMedium text-lg'><MdOutlineInsertLink className='text-bold text-3xl mr-1' />umroo.art/links</h1>
+                    <h1 className='flex items-center font-LinkSansMedium text-lg'><MdOutlineInsertLink className='text-bold text-3xl mr-1' />links.umroo.dev</h1>
                   </div>
                 </div>
                 <CopyLinkButton link={process.env.BASE_URL!} tag='Link' />
@@ -74,8 +72,8 @@ export default async function Home() {
           <h1 className="text-center text-xl font-bold mb-1">{profile.fullname}</h1>
 
           {/* Bio */}
-          <p className="text-center text-sm text-white/70 mb-4">
-            ✨ Wsup? Im Umroo! These are all my social links. I would appreciate you checking them out :) ✨
+          <p className="text-center text-sm text-white/70 mb-4 text-pretty">
+            Hi, I'm {profile.fullname}! Welcome to my link page. Explore and connect with me through the links below.
           </p>
           
           <LinkIcons />
@@ -85,7 +83,20 @@ export default async function Home() {
           <div className="space-y-3">
           
             {buttons.map((button) => (
-              <LinkButton key={button._id} label={button.label} href={button.href} type={button.type} imageLink={button.imgurl} contactName={profile.contactname} contactNumber={profile.contactnumber} contactEmail={profile.contactEmail} trackId={button.spotifyTrackId} description={button.description} commnityTitle={button.communityTitle}></LinkButton>   
+              <LinkButton
+                key={button._id}
+                label={button.label}
+                href={button.href}
+                type={button.type}
+                imageLink={button.imgurl}
+                contactName={profile.contactname}
+                contactNumber={profile.contactnumber}
+                contactEmail={profile.contactEmail}
+                trackId={button.spotifyTrackId}
+                description={button.description}
+                commnityTitle={button.communityTitle}
+                gameIds={button.gameIds}
+              />
           ))}
         </div>
         </div>
