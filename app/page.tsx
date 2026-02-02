@@ -9,6 +9,7 @@ import { CopyLinkButton } from '@/components/copyLinkButton';
 import { MdOutlineInsertLink } from 'react-icons/md';
 import { LinkIcons } from '@/components/LinkIcons';
 import { NewsletterDialog } from '@/components/NewsletterDialog';
+import { Suspense } from 'react';
 
 const PROFILE_QUERY = `*[_type == "profile" && slug.current == 'umroo'][0]`;
 const BUTTONS_QUERY = `*[_type== "buttons" && order < 9] | order(order asc)`
@@ -33,7 +34,9 @@ export default async function Home() {
         {/* Main Content Box */}
         <div className="w-full max-w-xl rounded-2xl text-white">
           <div className='flex justify-between'>
-            <NewsletterDialog profilePicUrl={profile.profilepicurl} blogUrl="https://blog.umroo.dev" />
+            <Suspense fallback={<Button className='w-10 h-10 rounded-full bg-black/40' disabled><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div></Button>}>
+              <NewsletterDialog profilePicUrl={profile.profilepicurl} blogUrl="https://blog.umroo.dev" />
+            </Suspense>
             <TriggerDialog
               trigger={<Button className='w-10 h-10 rounded-full bg-black/40'><IoEllipsisHorizontal /></Button>}
               title={'Share My Links'}
